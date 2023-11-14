@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>SmartLaravelCMS Laravel Admin Dashboard with Frontend Documentation</title>
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+    media="screen, projection">
+  <style type="text/css" media="screen">
+    p,
+    table,
+    hr,
+    .box {
+      margin-bottom: 25px;
+    }
+
+    .box p {
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background: #f5f5f5;
+    }
+
+    @media (min-width: 1000px) {
+      .container {
+        width: 1000px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+
+    <h3 class="center alt">&ldquo;SmartLaravelCMS Laravel Admin Dashboard with Frontend and APIs &rdquo; Documentation
+      by
+      &ldquo;MMondi&rdquo;
+      v5.0</h3>
+
+    <hr>
+    <h3 id="lang"><strong> How to change Arabic to your home language?</strong></h3>
+    <p>You can change the Arabic language to your home language easily in just 1 minute. Suppose you want to change [ar]
+      to French [fr] language.
+    <ul>
+      <li>1. Translate the files contents of ("backLang.php","frontLang.php") to your language. Also you can translate
+        all other files contents but not required.
+      </li>
+      <li>2. IMPORTANT: On this file "resources/lang/ar/backLang.php" <strong>DON'T change</strong> these three lines.
+        <pre>
+    'code' => 'ar',
+    'boxCode' => 'ar',
+    'boxCodeOther' => 'en',</pre>
+      </li>
+      <li>Note: You can do translation from the dashboard >> Webmaster >> Translations.</li>
+      <li>Note: Don't change the language folder name it will still the same name "resources/lang/ar".</li>
+      <li>Note: The language code will still [ar] but it will return your language as you translate on files.</li>
+    </ul>
+
+    </p>
+    <hr>
+    <h3 id="dashboard"><strong> How to add a new languages?</strong></h3>
+    <p><i>NOTE: This is a brief to show you the road plan for adding new languages. You need to have a good knowledge of
+        PHP and Laravel framework. If you want to save your time, You can order a language add-on service for only
+        <strong>$60</strong>. You can contact me on : eng.mondi@gmail.com</i></p>
+    <p> SmartLaravelCMS is coming with two default languages ( English & Arabic ), With ability to enable or disable
+      every one.
+      These are steps to modify and add more languages . <i>In my example i will add <strong>French</strong> language
+        <strong>[ fr ]</strong></i> :
+    <ul>
+      <li><a href="#lang-step1">STEP1: Define the new language</a></li>
+      <li><a href="#lang-step2">STEP2: Prepare Database , Migrations & Seeds and add new language columns</a></li>
+      <li><a href="#lang-step3">STEP3: Modify Views & Forms</a></li>
+      <li><a href="#lang-step4">STEP4: Modify Controllers ( Insert & Update to database )</a></li>
+    </ul>
+    </p>
+
+    <h3 id="lang-step1"><strong>STEP1</strong>: Define the new language</h3>
+    <img src="assets/images/lang_step1.png" alt="">
+    <p>
+    <ul>
+      <li>Go to this path : resources/lang</li>
+      <li>Duplicate this folder <strong>en</strong> and rename it to <strong>fr</strong></li>
+      <li>Open every file in this new folder <strong>[fr]</strong> and translate text to your new language fr ( You
+        can use the Visual Translations on the dashboard to do that )
+      </li>
+      <li>Important variables you will find them in the top of <strong>backLang.php</strong> file, Must be like this
+        <pre>
+    'direction' => 'ltr',
+    'code' => 'fr',
+    'lang' => 'FR',
+    'left' => 'left',
+    'right' => 'right',
+    'arabicBox' => '<small>[ العربية ]</small>',
+    'englishBox' => '<small>[ English ]</small>',
+    'frenchBox' => '<small>[ French ]</small>', // ADD This new VAR to backLang.php in all OLD languages folders
+    'rtl' => 'rtl',
+    'ltr' => 'ltr',
+    'boxCode' => 'fr',  // Important as it will define DB columns table like (title_fr, details_fr ... etc.)
+    'boxCodeOther' => 'en', // Default lang for if  (title_fr) is empty it will return  (title_en)
+    'translations' => 'Traductions',
+    'calendarLanguage' => 'fr', // Define your new calendar language</pre>
+      </li>
+      <li>To Add the new language to the languages list to allow user to choose his favorite language:
+        <ul>
+          <li>Modify this file <strong>resources/views/backEnd/includes/settings.blade.php</strong> change this
+            part of code from:
+            <pre>
+@if(Helper::GeneralWebmasterSettings("ar_box_status"))
+ &lt;option value="ar" {{ (trans('backLang.code')=="ar")?"selected='selected'":"" }}>{{ strip_tags(trans('backLang.arabicBox')) }}&lt;/option>
+@endif
+@if(Helper::GeneralWebmasterSettings("en_box_status"))
+ &lt;option value="en" {{ (trans('backLang.code')=="en")?"selected='selected'":"" }}>{{ strip_tags(trans('backLang.englishBox')) }}&lt;/option>
+@endif
+            </pre>
+            TO:
+            <pre>
+@if(Helper::GeneralWebmasterSettings("ar_box_status"))
+ &lt;option value="ar" {{ (trans('backLang.code')=="ar")?"selected='selected'":"" }}>{{ strip_tags(trans('backLang.arabicBox')) }}&lt;/option>
+@endif
+@if(Helper::GeneralWebmasterSettings("en_box_status"))
+ &lt;option value="en" {{ (trans('backLang.code')=="en")?"selected='selected'":"" }}>{{ strip_tags(trans('backLang.englishBox')) }}&lt;/option>
+@endif
+@if(Helper::GeneralWebmasterSettings("fr_box_status"))
+ &lt;option value="fr" {{ (trans('backLang.code')=="fr")?"selected='selected'":"" }}>{{ strip_tags(trans('backLang.frenchBox')) }}&lt;/option>
+@endif
+                </pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    </p>
+
+    <h3 id="lang-step2"><strong>STEP2</strong>: Prepare Database , Migrations & Seeds and add new language columns</h3>
+    <p>
+    <ul>
+      <li><strong>Note : If you are working Live/online You can add your new columns to your MySQL database manually
+          using PHPMyAdmin and SKIP this
+          step, But I recommend to follow these steps</strong></li>
+      <li>Go to this path : database/migrations</li>
+      <li>You will need to modify all these files
+        <ul>
+          <li>..._create_topics_table.php</li>
+          <li>..._create_sections_table.php</li>
+          <li>..._create_settings_table.php</li>
+          <li>..._create_menus_table.php</li>
+          <li>..._create_banners_table.php</li>
+          <li>..._create_maps_table.php</li>
+          <li>..._create_attach_files_table.php</li>
+          <li>..._create_countries_table.php</li>
+        </ul>
+      </li>
+      <li>Like this:
+        <pre>
+            Schema::create('topics', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title_ar')->nullable();
+            $table->string('title_en')->nullable();
+            $table->string('title_fr')->nullable(); // the new column for title in french
+            $table->longText('details_ar')->nullable();
+            $table->longText('details_en')->nullable();
+            $table->longText('details_en')->nullable(); // the new column for details in french
+            $table->date('date')->nullable();
+            $table->tinyInteger('video_type')->nullable();
+            $table->string('photo_file')->nullable();
+            $table->string('attach_file')->nullable();
+            $table->string('video_file')->nullable();
+            $table->string('audio_file')->nullable();
+            $table->string('icon')->nullable();
+            $table->tinyInteger('status');
+            $table->integer('visits');
+            $table->integer('webmaster_id');
+            $table->integer('section_id');
+            $table->integer('row_no');
+            $table->string('seo_title_ar')->nullable();
+            $table->string('seo_title_en')->nullable();
+            $table->string('seo_title_fr')->nullable(); // the new column for seo_title in french
+            $table->string('seo_description_ar')->nullable();
+            $table->string('seo_description_en')->nullable();
+            $table->string('seo_description_fr')->nullable(); // the new column for seo_description in french
+            $table->string('seo_keywords_ar')->nullable();
+            $table->string('seo_keywords_en')->nullable();
+            $table->string('seo_keywords_fr')->nullable(); // the new column for seo_keywords in french
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->timestamps();
+        });</pre>
+      </li>
+      <li><strong>Optional : </strong>To Modify the default data in tables, Modify Seeds on this path :
+        database/seeds:
+        <ul>
+          <li>MenusSeeder.php</li>
+          <li>TopicsSeeder.php</li>
+          <li>SettingsSeeder.php</li>
+          <li>BannersSeeder.php</li>
+        </ul>
+      </li>
+      <li> like this
+        <pre>
+        // Main Menu
+        $Menu1 = new Menu();
+        $Menu1->row_no = 1;
+        $Menu1->father_id = 0;
+        $Menu1->title_ar = "القائمة الرئيسية";
+        $Menu1->title_en = "Main Menu";
+        $Menu1->title_fr = "Main Menu";   //  add the default data in the all new columns like this one
+        $Menu1->status = 1;
+        $Menu1->type = 0;
+        $Menu1->cat_id = 0;
+        $Menu1->link = "";
+        $Menu1->created_by = 1;
+        $Menu1->save();</pre>
+      </li>
+      </li>
+
+      <li><strong>Optional : </strong>If you want to make the new language optional to be enabled or disabled from the
+        Webmaster settings you will need to edit this migration
+        [2017_02_16_230800_create_webmaster_settings_table.php]:
+        like this:
+        <pre>
+            Schema::create('webmaster_settings', function (Blueprint $table) {
+            $table->increments('id');
+            $table->tinyInteger('ar_box_status');
+            $table->tinyInteger('en_box_status');
+            $table->tinyInteger('fr_box_status'); // The new settings for fr language
+            $table->tinyInteger('seo_status');</pre>
+        Also add the new default setting on seeds/WebmasterSettingsSeeder.php
+      </li>
+      <li>
+        Now you can remigrate your app to modify the MySQL Database, To do that from <strong>terminal</strong> point
+        to your app folder and run these three command one by one:
+        <pre>
+            php artisan migrate:rollback
+            php artisan migrate
+            php artisan db:seed</pre>
+      </li>
+
+    </ul>
+    </p>
+    <h3 id="lang-step3"><strong>STEP3</strong>: Modify Views & Forms</h3>
+    <p>
+    <ul>
+      <li>To add the new <strong>text boxes</strong> to forms, You will need to modify all next files on
+        <strong>resources/views/backEnd</strong>
+        and add the new language fields text boxes
+        <ul>
+          <li>topics/create.blade.php</li>
+          <li>topics/edit.blade.php</li>
+          <li>sections/create.blade.php</li>
+          <li>sections/edit.blade.php</li>
+          <li>menus/create.blade.php</li>
+          <li>menus/edit.blade.php</li>
+          <li>banners/create.blade.php</li>
+          <li>banners/edit.blade.php</li>
+          <li>settings/settings.blade.php</li>
+        </ul>
+        <br>
+        For example to add a text box for title in french:
+        <pre>
+ @if(Helper::GeneralWebmasterSettings("fr_box_status"))
+    {!! Form::text('title_fr','', array('placeholder' => '','class' => 'form-control','id'=>'title_fr'
+            ,'required'=>'', 'dir'=>trans('backLang.ltr'))) !!}
+ @endif</pre>
+        For example to add a text area with editor for details in french:
+        <pre>
+ @if(Helper::GeneralWebmasterSettings("fr_box_status"))
+    {!! Form::textarea('details_fr','', array('ui-jp'=>'summernote','placeholder' => '','class' => 'form-control'
+            , 'dir'=>trans('backLang.ltr'),'ui-options'=>'{height: 300}')) !!}
+  @endif</pre>
+        You need to do that for all Create & edit files.
+      </li>
+      </li>
+    </ul>
+    </p>
+    <h3 id="lang-step4"><strong>STEP4</strong>: Modify Controllers ( Insert & Update to database )</h3>
+    <p>
+    <ul>
+      <li>To save & update data that send from forms, You will need to modify next controllers on this path
+        <strong>app/Http/Controllers</strong>
+        <ul>
+          <li>SectionsController.php</li>
+          <li>TopicsController.php</li>
+          <li>MenusController.php</li>
+          <li>BannersController.php</li>
+          <li>SettingsController.php</li>
+        </ul>
+
+        You will need to modify <strong>store</strong> & <strong>update</strong> functions.
+        <br>
+        Like this:
+        <pre>
+            $Topic = new Topic;
+            $Topic->row_no = $next_nor_no;
+            $Topic->title_ar = $request->title_ar;
+            $Topic->title_en = $request->title_en;
+            $Topic->title_fr = $request->title_fr; // add the new french title
+            $Topic->details_ar = $request->details_ar;
+            $Topic->details_en = $request->details_en; // add the new french details</pre>
+
+        Do the same for the other controllers.
+      </li>
+    </ul>
+    <strong>Congratulations : now you have your app with three languages.</strong><br><br>
+    <p><img src="assets/images/lang_step4.png" alt=""></p>
+
+    </p>
+    <hr>
+    <p>Once again, thank you so much for purchasing this dashboard. As I said at the beginning, I'd be glad to help you
+      if
+      you have any questions relating to this dashboard. No guarantees, but I'll do my best to assist. If you have a
+      more
+      general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your
+      question in the "Item Discussion" section.</p>
+
+    <p class="append-bottom alt large"><strong>MMondi</strong></p>
+    <p><a href="#toc">Go To Table of Contents</a></p>
+
+    <hr class="space">
+  </div><!-- end div .container -->
+</body>
+
+</html>

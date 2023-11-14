@@ -1,0 +1,699 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>SmartLaravelCMS Laravel Admin Dashboard with Frontend and APIs Documentation</title>
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+    media="screen, projection">
+  <style type="text/css" media="screen">
+    p,
+    table,
+    hr,
+    .box {
+      margin-bottom: 25px;
+    }
+
+    .box p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+
+    <h3 class="center alt">&ldquo;SmartLaravelCMS Laravel Admin Dashboard with Frontend and APIs &rdquo; Documentation
+      by &ldquo;MMondi&rdquo;
+      v5.0</h3>
+
+    <hr>
+
+    <h1 class="center">&ldquo;SmartLaravelCMS Laravel Dashboard with Frontend, APIs &rdquo;</h1>
+
+    <div class="borderTop">
+      <div class="span-6 colborder info prepend-1">
+        <p class="prepend-top">
+          <strong>
+            Created: 10/03/2017<br>
+            Last update : 27/05/2018<br>
+            By: MMondi<br>
+            Email: <a href="mailto:support@smartfordesign.com">support@smartfordesign.com</a>
+          </strong>
+        </p>
+      </div><!-- end div .span-6 -->
+
+      <div class="span-12 last">
+        <p class="prepend-top append-0">Thank you for purchasing my dashboard. If you have any questions that are
+          beyond the scope of this help file, please feel free to email via my user page contact form <a
+            href="http://themeforest.net/user/mmondi">here</a>. Thanks so much!</p>
+      </div>
+    </div><!-- end div .borderTop -->
+
+    <hr>
+
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#inbox">Inbox</a></li>
+      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="#pages">Pages & Sections</a></li>
+      <li><a href="#banares">Ad. Banners</a></li>
+      <li><a href="#settings">General Settings</a></li>
+      <li><a href="#menus">Site Menus</a></li>
+      <li><a href="#users">Users & Permissions</a></li>
+      <li><a href="#wsettings">Webmaster Settings</a></li>
+      <li><a href="#sections">Site Sections</a></li>
+      <li><a href="#banaresttings">Banners settings</a></li>
+      <li><a href="#translations">Translations</a></li>
+      <li><a href="#changelog">Changelog</a></li>
+      <li><a href="fordevelopers.html" target="_blank">How to edit or add new languages?</a></li>
+      <li><a href="api.html" target="_blank">APIs Documentation</a></li>
+    </ol>
+
+    <hr>
+
+    <h3 id="installation"><strong>A) Installation</strong> - <a href="#toc">top</a></h3>
+    <p> It's an easy way for installation, just follow these steps:
+    <Ol>
+      <li>Copy project folder to your root folder.</li>
+      <li>Create your MySQL database and import <strong>smartlaravelcms_db.sql</strong> file.</li>
+      <li>Edit (.env) file and add details for MySQL connection:
+        <ul>
+          <li>DB_DATABASE=smartlaravelcms_db</li>
+          <li>DB_USERNAME=root</li>
+          <li>DB_PASSWORD=root</li>
+          <li>MAIL_USERNAME=YOUR EMAIL ADDRESS</li>
+          <li>MAIL_PASSWORD=YOUR EMAIL PASSWORD</li>
+        </ul>
+      </li>
+      <li>Set permissions for upload folder <strong>(public/uploads)</strong> and it's sub folders to : 777</li>
+      <li>Congratulation your project ready to work.</li>
+    </Ol>
+    <u>Default admin login information:</u> <br>
+    Email: admin@site.com
+    <br>
+    Password: admin
+    <br>
+    <br>
+    <u>Important Notes:</u><br>
+    <ul>
+      <li>If you can't find (.env) file it may be hidden in your machine so you need to show hidden files.</li>
+      <li>You have to set the permissions for upload folder (public/uploads) and it's sub folders to : 777</li>
+      <li>In some servers you have to set the webmail email address in (settings/general settings) the same you use to
+        send from ( in .env files) to activate send emails successfully.</li>
+
+    </ul>
+
+    </p>
+    <hr>
+    <h3 id="dashboard"><strong>B) Dashboard</strong> - <a href="#toc">top</a></h3>
+    <p> Dashboard will give you the latest updates and visitor reports for current day. Also it will be
+      dynamic for your website sections and give you last updates from Inbox, Calendar and Contacts.</p>
+    <p>
+      Also you will see :
+    <ul>
+      <li>Important website section and pages count.</li>
+      <li>Visitors for the last 7 Days.</li>
+      <li>Visitors rate over the current day.</li>
+      <li>Browsers rate Calculated in last 7 days</li>
+      <li>Visitors & Page views by country for current day</li>
+    </ul>
+    </p>
+
+    <hr>
+    <h3 id="analytics"><strong>C) Analytics</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Models:</strong> AnalyticsPage, AnalyticsVisitor
+      <br>
+      <strong>Controller:</strong> AnalyticsController
+      <br>
+      <strong>MySQL Tables:</strong> analytics_pages, analytics_visitors
+    </p>
+    <p> Analytics enable you to view and check all the website visitors and pages viewed as a report and
+      that can be for:
+    <ul>
+      <li>Current Day</li>
+      <li>Yesterday</li>
+      <li>Last 30 days</li>
+      <li>This month</li>
+      <li>Last month</li>
+      <li>Custom dates range</li>
+    </ul>
+    </p>
+    <p>
+      Also Visitors and Page views grouped by :
+    <ul>
+      <li>Date</li>
+      <li>Country</li>
+      <li>City</li>
+      <li>Operating system</li>
+      <li>Browser</li>
+      <li>Reach way</li>
+      <li>Host name</li>
+      <li>Organization</li>
+    </ul>
+    </p>
+    <h3>Visitor History</h3>
+    <p>Show a list of visitors ordered by date, IP, Country and City. You can click any IP to get IP
+      history.</p>
+
+    <h3>IP inquiry</h3>
+    <p>From here you can search by IP to get the IP history report that show the details for IP :Country,
+      City, Region, Address, MAP Location, Host name, Organization, Last Visit, Operating system and
+      Browser.
+      <br>
+      <strong>Activities History :</strong> show all pages and links visited by this IP ordered by date.
+    </p>
+    <hr>
+    <h3 id="contacts"><strong>D) Contacts</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Models:</strong> Contact, ContactsGroup, Country
+      <br>
+      <strong>Controller:</strong> ContactsController
+      <br>
+      <strong>MySQL Tables:</strong> contacts, contacts_groups, countries
+    </p>
+    <p>
+    <ul>
+      <li>This can be your contacts, members , newsletter contacts or customers list with all details you
+        need.
+      </li>
+      <li>You can activate or block any one.</li>
+      <li>You can use the contacts search engine to find any one by name, phone or email address.</li>
+      <li> You can add more groups for contacts any time.</li>
+    </ul>
+    </p>
+    <p>
+      Fields that can be recorded :
+    <ul>
+      <li>First Name</li>
+      <li>Last Name</li>
+      <li>Group Name</li>
+      <li>Personal Photo</li>
+      <li>Phone</li>
+      <li>Email</li>
+      <li>Company Name</li>
+      <li>Country</li>
+      <li>Status
+        <ul>
+          <li>Active</li>
+          <li>Wait Activation</li>
+          <li>Not Active (Blocked)</li>
+        </ul>
+      </li>
+      <li>Additional Notes</li>
+    </ul>
+    </p>
+
+    <hr>
+    <h3 id="inbox"><strong>E) Inbox</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Models:</strong> Webmail, WebmailsGroup, WebmailsFile
+      <br>
+      <strong>Controller:</strong> WebmailsController
+      <br>
+      <strong>MySQL Tables:</strong> webmails, webmails_groups, webmails_files
+    </p>
+    <p>
+    <ul>
+      <li>Inbox contain these sections:
+        <ul>
+          <li><strong>Compose:</strong> to send new messages</li>
+          <li><strong>Inbox:</strong> list of incoming messages</li>
+          <li><strong>Sent:</strong> list of your sent messages</li>
+          <li><strong>Draft:</strong> save messages temporary before sending it</li>
+          <li><strong>Additional Labels:</strong> to customize incoming messages. (ex: Orders,
+            Suggestions, Queries ... ect)
+          </li>
+        </ul>
+      </li>
+      <li>You can <strong>replay</strong> to messages.</li>
+      <li>You can <strong>forward</strong> messages.</li>
+      <li>You can make messages as <strong>read</strong> or as <strong>unread</strong>.</li>
+      <li>You can <strong>delete</strong> messages.</li>
+      <li>You can <strong>move</strong> messages to other labels.</li>
+    </ul>
+    </p>
+    <h3>Webmail Connect</h3>
+    <p>You can connect your webmail, see how many new messages you have and can go direct to you webmail
+      inbox without asking for login every time.<br>
+      To do that from the user profile just save your email and password and it will be connected
+      automatically.
+
+    </p>
+
+    <hr>
+    <h3 id="calendar"><strong>F) Calendar</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> Event
+      <br>
+      <strong>Controller:</strong> EventsController
+      <br>
+      <strong>MySQL Table:</strong> events
+    </p>
+    <p>
+    <ul>
+      <li>You can add deferment types:
+        <ul>
+          <li>Notes</li>
+          <li>Meetings</li>
+          <li>Events</li>
+          <li>Tasks</li>
+        </ul>
+      </li>
+      <li>You can <strong>delete</strong> or <strong>update</strong> any record.</li>
+      <li>You can <strong>clear</strong> all records.</li>
+      <li>You can <strong>Move</strong> records direct from the calendar.</li>
+      <li>You can <strong>Extend</strong> period for any record direct from the calendar.</li>
+      <li>Latest records and <strong>notifications</strong> will appear automatically on dashboard.</li>
+    </ul>
+    </p>
+    <hr>
+    <h3 id="pages"><strong>G) Pages & Sections</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Models:</strong> Topic, Section, Photo, Comment, Map
+      <br>
+      <strong>Controllers:</strong> TopicsController, SectionsController
+      <br>
+      <strong>MySQL Tables:</strong> topics, sections, photos, comments, maps
+    </p>
+    <p>You can prepare all sections you need for the website and set it from (<strong>Webmaster &raquo; <a
+          href="#sections">Site Sections</a></strong>).You can add different types of sections:
+    <ul>
+      <li>Text Pages</li>
+      <li>Photo Gallery</li>
+      <li>Video Gallery</li>
+      <li>Audio Book</li>
+    </ul>
+    You can set these settings for every section :
+    <ul>
+      <li>Categories Type:
+        <ul>
+          <li>Without Categories</li>
+          <li>Main categories only</li>
+          <li>Main and sub categories</li>
+        </ul>
+      </li>
+      <li>Allow Reviews &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Add Date Field &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Add Long Text Field &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Editor for Long Text Field &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Attach File Field &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Additional Images &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Categories Icon Picker &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Topics Icon Picker &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Attach Google Maps &raquo;
+        <small>Yes / No</small>
+      </li>
+    </ul>
+    All active sections will appear automatically on the main menu. Every record/topic can contain one or
+    more of these tabs:
+    <ul>
+      <li>Topic Details</li>
+      <li>Photos</li>
+      <li>Google Maps</li>
+      <li>SEO Settings</li>
+    </ul>
+    </p>
+    <hr>
+    <h3 id="banares"><strong>H) Ad. Banners</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> Banner
+      <br>
+      <strong>Controller:</strong> BannersController
+      <br>
+      <strong>MySQL Table:</strong> banners
+    </p>
+    <p>You can prepare all banners types you need for the website and set it from (<strong>Webmaster &raquo;
+        <a href="#banaresttings">Banners settings</a></strong>).You can add different types of banners:
+    <ul>
+      <li>Code / Text</li>
+      <li>Photo</li>
+      <li>Video</li>
+    </ul>
+    You can set these settings for every banner type :
+    <ul>
+      <li>Size of every banner type (Width & Height) by pixel</li>
+      <li>Allow Box for description &raquo;
+        <small>Yes / No</small>
+      </li>
+      <li>Allow Box for URL &raquo;
+        <small>Yes / No</small>
+      </li>
+    </ul>
+    </p>
+    <hr>
+    <h3 id="settings"><strong>I) General Settings</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> Setting
+      <br>
+      <strong>Controller:</strong> SettingsController
+      <br>
+      <strong>MySQL Table:</strong> settings
+    </p>
+    <p>
+      From this page you can set all general settings for you website you will find these settings in four
+      tabs:
+    <ul>
+      <li><strong>Website Info:</strong>
+        <ul>
+          <li>Website Title</li>
+          <li>Meta Description</li>
+          <li>Meta Keywords</li>
+          <li>Website URL</li>
+          <li>Website Notification Email</li>
+        </ul>
+      </li>
+      <li><strong>Contacts:</strong>
+        <ul>
+          <li>Address</li>
+          <li>Phone</li>
+          <li>Fax</li>
+          <li>Mobile</li>
+          <li>Email</li>
+          <li>Working Time</li>
+        </ul>
+      </li>
+      <li><strong>Style Settings:</strong>
+        <ul>
+          <li>Site Logo</li>
+          <li>Fav Icon</li>
+          <li>Apple Icon</li>
+          <li>Style Color 1</li>
+          <li>Style Color 2</li>
+          <li>Layout Mode</li>
+          <li>Background Style</li>
+          <li>Footer Style</li>
+          <li>Newsletter Subscribe</li>
+          <li>Preloader</li>
+        </ul>
+      </li>
+      <li><strong>Social Links:</strong>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Google+</li>
+          <li>Linkedin</li>
+          <li>Youtube</li>
+          <li>Instagram</li>
+          <li>Pinterest</li>
+          <li>Tumblr</li>
+          <li>Flickr</li>
+          <li>Whatapp</li>
+        </ul>
+      </li>
+      <li><strong>Website Status:</strong>
+        <ul>
+          <li>Active</li>
+          <li>Not Active (with Close Message)</li>
+        </ul>
+      </li>
+    </ul>
+    </p>
+
+    <hr>
+    <h3 id="menus"><strong>J) Site Menus</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> Menu
+      <br>
+      <strong>Controller:</strong> MenusController
+      <br>
+      <strong>MySQL Table:</strong> menus
+    </p>
+    <p>
+      Enable you to prepare all menus you will need in your website to be dynamic and easy to update any
+      time :
+    <ul>
+      <li>You can create more than one menu.</li>
+      <li>Every menu can contain diffrent links types:
+        <ul>
+          <li>Titles without links.</li>
+          <li>Direct links to a page or site.</li>
+          <li>Main Section Link ( you can choose which section you want from a drop list ).</li>
+          <li>Drop List ( you can choose which section to make a drop list for sub categories ).</li>
+        </ul>
+      </li>
+      <li>You can change the order of any link, activate, block it or delete any time.</li>
+    </ul>
+    </p>
+    <hr>
+    <h3 id="users"><strong>K) Users & Permissions</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> User, Permissions
+      <br>
+      <strong>Controller:</strong> UsersController
+      <br>
+      <strong>MySQL Table:</strong> users, permissions
+    </p>
+    <p>You can create many users to access this dashboard with different permissions. You mange and create different
+      types of permissions:
+    <ul>
+      <li>Webmaster</li>
+      <li>Website Manager</li>
+      <li>Limited User</li>
+      <li>Review User</li>
+      <li>Activate APPs</li>
+      <li>Activate Site Sections</li>
+      <li>User can mange his own data or all users data</li>
+    </ul>
+    To create a new user you will fill a form that will ask you for:
+    <ul>
+      <li>Full Name</li>
+      <li>Login Email</li>
+      <li>Login Password</li>
+      <li>Personal Photo (Optional)</li>
+      <li>Permission type</li>
+    </ul>
+    Also you can connect you webmail to open it directly from dashboard and see how many new emails you have.
+    </p>
+    <hr>
+    <h3 id="wsettings"><strong>L) Webmaster General Settings</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> WebmasterSetting
+      <br>
+      <strong>Controller:</strong> WebmasterSettingsController
+      <br>
+      <strong>MySQL Table:</strong> webmaster_settings
+    </p>
+    <p> From this page you can control Active or disable Apps for your dashboard:
+    <ul>
+      <li>Analytics</li>
+      <li>Inbox</li>
+      <li>Calendar</li>
+      <li>Ad. Banners</li>
+      <li>Contacts</li>
+      <li>General Settings</li>
+    </ul>
+    Other Settings:
+    <ul>
+      <li>Arabic language fields &raquo;
+        <small>Active / Not Active</small>
+      </li>
+
+      <li>English language fields &raquo;
+        <small>Active / Not Active</small>
+      </li>
+
+      <li>SEO Tab &raquo;
+        <small>Active / Not Active</small>
+      </li>
+
+    </ul>
+    </p>
+    <hr>
+    <h3 id="sections"><strong>M) Site Sections</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> WebmasterSection
+      <br>
+      <strong>Controller:</strong> WebmasterSectionsController
+      <br>
+      <strong>MySQL Table:</strong> webmaster_sections
+    </p>
+    <p> From this page you can add and set all data sections for the website. More details in <a href="#pages">Pages &
+        Sections</a>.</p>
+    <hr>
+    <h3 id="banaresttings"><strong>N) Banners settings</strong> - <a href="#toc">top</a></h3>
+    <p>
+      <strong>Model:</strong> WebmasterBanner
+      <br>
+      <strong>Controller:</strong> WebmasterBannersController
+      <br>
+      <strong>MySQL Table:</strong> webmaster_banners
+    </p>
+    <p> From this page you can add and set different types of banners. More details in <a href="#banares">Ad.
+        Banners</a>.</p>
+
+    <hr>
+    <h3 id="translations"><strong>O) Translations </strong> - <a href="#toc">top</a></h3>
+    <p>
+      You can import all site translation words, update them and export them again and it will be updated and saved to
+      language system files.
+    </p>
+    <hr>
+    <h3 id="changelog"><strong>P) Changelog</strong> - <a href="#toc">top</a></h3>
+    <pre>Version 1.0 (December 27, 2016)
+- Release of this script on Codecanyon.
+- Built with Laravel 5.2.
+
+Version 1.1 (January 02, 2017)
+- Adding a new version for Laravel 5.3.
+
+Version 1.2 (January 17, 2017)
+- Resolve: Include sql file with 5.3 version.
+- Resolve: Logout bug on 5.3 version.
+- Feature: Get & save visitors information ( Analytics ) to the database.
+
+Version 2.0 (March 10, 2017)
+- Feature: Update to Laravel version 5.4.
+- Feature: Visual translation for all languages vars.
+- Feature: Advanced permissions for users.
+- Feature: Ability to activate order form with topics.
+- Feature: Setting DB tables prefix in .env File.
+- Feature: Setting default language in .env File.
+- Feature: Enable/Disable Captcha from .env File.
+- Feature: Calendar language now available to set from language file.
+- Feature: Adding Vimeo to video types .
+- Feature: Icon Picker for Ad. Banners .
+- Feature: Adding Email notifications settings to General Settings.
+- Feature: Adding Frontend site style settings to General Settings.
+- Feature: General Frontend settings to Webmaster General Settings.
+- Feature: NEW Frontend site preview.
+
+Version 2.1 (July 16, 2017)
+- Resolve bug on editing main admin user.
+- Resolve bug on frontend footer.
+- Resolve bug on calendar events end time.
+- Resolve bug on frontend RTL main menu.
+- Adding slide to the conformation message on contact page.
+- Adding arrows to the main menu that has sub menus frontend.
+- Adding Embed Video ability on backend & frontend.
+
+Version 2.2 (September 18, 2017)
+- Resolve : Automatic adding permission while creating new site sections.
+- Resolve : title for new site sections on main menu (if no translation).
+- Feature: Adding ability to activate expire date with topics of any section.
+- Feature: Adding ability to activate attaching more files with any topic.
+- Feature: View attached files links to download on topic page of frontend.
+
+Version 3.0 (September 18, 2017)
+- Feature: Update to Laravel version 5.5 (Requires PHP 7.0.0 or more).
+
+Version 3.1 (November 16, 2017)
+- Feature: Restful API is now available for Frontend (/api/v1).
+- Feature: Ability to add additional custom fields to any section (CRUD).
+- Feature: Automatic sitemap generator (/sitemap.xml or /en/sitemap or /ar/sitemap).
+- Feature: Update SEO settings and ability to activate friendly URLs.
+- Feature: Multi categories choosing for every topic.
+- Feature: Related topics tab for every topic.
+- Feature: Ability to activate/disable registration feature for the dashboard.
+- Feature: Rearrange Frontend and css style.
+- Feature: Adding partners section on Frontend.
+- Resolve: Exception if topic ID not found.
+- Resolve: Open/Close website feature.
+- Resolve: Comments showing status if disabled.
+- Resolve: show subcategories on main and side menu.
+- Resolve: analytics app active/disable on dashboard side menu.
+- Resolve: languages choosing depending on active one.
+- Resolve: fix second language (ar) URLs in all pages for frontend website & sitemap.
+Two Versions with the same features is available for (Laravel 5.4 & Laravel 5.5)
+
+Version 3.2 (January 18, 2018)
+- Resolve: Language code in session & menu URLs.
+
+Version 4.0 (February 25, 2018)
+- Adding a new project version for Laravel 5.6 (Requires PHP >= 7.1.3).
+
+Version 4.1 (April 22, 2018)
+- Feature: adding login with Facebook ,Twitter, Google, LinkedIN, Github, Bitbucket.
+- Feature: adding google Tags & Analytics control in dashboard.
+- Feature: activate/Deactivate captcha from dashboard.
+- Feature: adding Email settings control in dashboard.
+- Feature: adding clear cache feature.
+- Feature: optimize Banners view method.
+- Feature: optimize Menus view method.
+- Feature: bulk settings save with one button.
+- Feature: adding timezone to language settings.
+- Feature: translate all error messages to Arabic.
+- Feature: change Arabic fonts in dashboard & frontend.
+- Feature: Update all dependencies & packages.
+- Feature: Rearrange & Optimize project files.
+- Resolve: Redirect after login to /admin.
+- Resolve: user profile picture upload path.
+- Resolve: homepage blocks dependencies.
+- Resolve: reCAPTCHA validation in Laravel 5.6 version.
+- Resolve: removing files while deleting multi photos in topics.
+
+Version 4.2 (May 17, 2018)
+- Feature: fixed header active/disable for Frontend.
+- Feature: adding events on calendar on day click.
+- Resolve: count() exception in PHP7.2.
+- Resolve: sitemap Date Format.
+
+Version 4.3 (May 27, 2018)
+- Feature: Update all dependencies & packages.
+- Fix: Id passing of left side banners.
+- Fix: Captcha package error for Laravel v5.4,v5.5.
+- Fix: Boxed style width on mobile view.
+- Fix: Whatsapp link on social icons.
+- Fix: Notification message topic title in comment & order form.
+
+Version 4.4 (August 23, 2018)
+- Fix: Laravel version 5.4 running issue on PHP 5.6.
+- Fix: Frontend boxed + fixed header scroll.
+- Fix: Bulk options if no record selected issue.
+- Fix: PHP 7.1 count() problem in API calls.
+- Fix: Reset password page issue.
+
+Version 5.0 (February 15, 2019)
+- Adding a new project version for Laravel 5.7 (Requires PHP >= 7.1.3).
+- Fix: Migrations fresh rand() error.
+- Fix: Rows Ordering if row checked or not checked.
+- Fix: Topics count in dashboard categories page.
+- Fix: Categories enable/disable in frontend main menu.
+- Fix: External links path in frontend main menu.
+- Fix: Additional fields enable/disable in webmaster site sections.
+- Update: Editor photo insert/upload as physical file not to DB.
+- Update: Google maps language control form backLang file.
+</pre>
+
+    <hr>
+    <p>Once again, thank you so much for purchasing this dashboard. As I said at the beginning, I'd be glad to help you
+      if
+      you have any questions relating to this dashboard. No guarantees, but I'll do my best to assist. If you have a
+      more
+      general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your
+      question in the "Item Discussion" section.</p>
+
+    <p class="append-bottom alt large"><strong>MMondi</strong></p>
+    <p><a href="#toc">Go To Table of Contents</a></p>
+
+    <hr class="space">
+  </div><!-- end div .container -->
+</body>
+
+</html>

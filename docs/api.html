@@ -1,0 +1,3204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>SmartLaravelCMS Laravel Admin Dashboard with Frontend and APIs Documentation</title>
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+    media="screen, projection">
+  <style type="text/css" media="screen">
+    p,
+    table,
+    hr,
+    .box {
+      margin-bottom: 25px;
+    }
+
+    .box p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+
+    <h3 class="center alt">&ldquo;SmartLaravelCMS Laravel Admin Dashboard with Frontend and APIs &rdquo; Documentation
+      by
+      &ldquo;MMondi&rdquo;
+      v5.0</h3>
+
+    <hr>
+
+    <h1 class="center">&ldquo;SmartLaravelCMS APIs Documentation&rdquo;</h1>
+
+    <p>
+      Available APIs is for frontend to retrieve the whole website contents for all pages and sections, submit
+      messages, comments, orders or subscribe to newsletter. Easy and flexible.
+    </p>
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="#api">How to enable Restful API and get APi_key?</a></li>
+      <li>Restful Web Services
+        <ol>
+          <li>{ GET } &nbsp; &nbsp; <a href="#status">/api/v1/website/status</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#info">/api/v1/website/info</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#contacts">/api/v1/website/contacts</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#style">/api/v1/website/style</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#social">/api/v1/website/social</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#settings">/api/v1/website/settings</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#menu">/api/v1/menu/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#banners">/api/v1/banners/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#section">/api/v1/section/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#categories">/api/v1/categories/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#topics">/api/v1/topics/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#topic">/api/v1/topic/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#fields">/api/v1/topic/fields/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#photos">/api/v1/topic/photos/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#photo">/api/v1/topic/photo/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#maps">/api/v1/topic/maps/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#map">/api/v1/topic/map/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#files">/api/v1/topic/files/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#file">/api/v1/topic/file/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#comments">/api/v1/topic/comments/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#comment">/api/v1/topic/comment/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#related">/api/v1/topic/related/</a></li>
+          <li>{ GET } &nbsp; &nbsp; <a href="#user">/api/v1/user/</a></li>
+          <li>{ POST } &nbsp; <a href="#subscribe">/api/v1/subscribe</a></li>
+          <li>{ POST } &nbsp; <a href="#post_comment">/api/v1/comment</a></li>
+          <li>{ POST } &nbsp; <a href="#order">/api/v1/order</a></li>
+          <li>{ POST } &nbsp; <a href="#contact">/api/v1/contact</a></li>
+        </ol>
+      </li>
+    </ol>
+
+    <hr>
+
+    <h3 id="api"><strong>A) How to enable Restful API and get APi_key?</strong> - <a href="#toc">top</a></h3>
+    <p> To enable the API you can do that from SmartLaravelCMS Admin Dashboard:
+    <Ol>
+      <li>Go to Webmaster >> General Settings</li>
+      <li>Frontend settings >> <strong>RESTful API status</strong></li>
+      <li>Make it <strong>Active</strong> and you will see your <strong>API_key</strong></li>
+      <li>You can change & generate a new API_Key from the link under the API_key</li>
+    </Ol>
+    <strong>Note:</strong> [ API_key ] is required and you will use it in case of POST Restful Services like posting a
+    new comment, messages .. etc.
+    </p>
+    <hr>
+    <h3>B) Restful Web Services</h3>
+    <hr>
+    <h3 id="status"><strong>/api/v1/website/status</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the status of the website and the html message in case of closed.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/status</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Website Status details",
+    "details": {
+        "status": 1,
+        "close_msg": ""
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              <strong>"status"</strong><br> 0 = Closed, 1= active
+            </div>
+            <br>
+            <div>
+              <strong>"close_msg"</strong><br> html message in case of "status" is 0
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="info"><strong>/api/v1/website/info</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the information of the website.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/info</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/website/info
+            <br>
+            /api/v1/website/info/en
+            <br>
+            /api/v1/website/info/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Main information about the Website",
+    "details": {
+        "site_url": "http://website_url",
+        "site_title": "Website title",
+        "site_desc": "Website description",
+        "site_keywords": "key, words, website, web",
+        "site_webmails": "support@smartfordesign.com"
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="contacts"><strong>/api/v1/website/contacts</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the contacts information of the website.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/contacts</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/website/contacts
+            <br>
+            /api/v1/website/contacts/en
+            <br>
+            /api/v1/website/contacts/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Contacts Details",
+    "details": {
+        "address": "Building, Street name, City, Country",
+        "phone": "+(00) 0123456789",
+        "fax": "+(00) 0123456789",
+        "mobile": "+(00) 0123456789",
+        "email": "info@sitename.com",
+        "working_time": "Sunday to Thursday 08:00 AM to 05:00 PM"
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="style"><strong>/api/v1/website/style</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the Style Settings of the website.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/style</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/website/style
+            <br>
+            /api/v1/website/style/en
+            <br>
+            /api/v1/website/style/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Style Settings",
+    "details": {
+        "logo": "http://file_url",
+        "fav_icon": "http://file_url",
+        "apple_icon": "http://file_url",
+        "style_color_1": "#0cbaa4",
+        "style_color_2": "#2e3e4e",
+        "layout_mode": 0,
+        "bg_type": 0,
+        "bg_pattern": null,
+        "bg_color": "#2e3e4e",
+        "bg_image": null,
+        "footer_style": 1,
+        "footer_bg": null,
+        "newsletter_subscribe_status": 1,
+        "preload_status": 0
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              <strong>"layout_mode"</strong><br> 0 = Wide, 1 = boxed
+            </div>
+            <br>
+            <div>
+              <strong>"bg_type"</strong><br> 0 = color, 1 = Pattern, 2 = Image
+            </div>
+            <br>
+            <div>
+              <strong>"footer_style"</strong><br> 0 = Footer Style #1,<br> 1 = Footer Style #2
+            </div>
+            <br>
+            <div>
+              <strong>"newsletter_subscribe_status"</strong><br> 0 = disabled, 1 = active
+            </div>
+            <br>
+            <div>
+              <strong>"preload_status"</strong><br> 0 = disabled, 1 = active
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="social"><strong>/api/v1/website/social</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the social links of the website.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/social</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Social Networks Links",
+    "details": {
+        "facebook": "#",
+        "twitter": "#",
+        "google": "#",
+        "linkedin": "#",
+        "youtube": "#",
+        "instagram": "#",
+        "pinterest": "#",
+        "tumblr": "#",
+        "flickr": "#",
+        "whatsapp": "#"
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="settings"><strong>/api/v1/website/settings</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get the general website settings.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/website/settings</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "General Website Settings",
+    "details": {
+        "languages_count": 2,
+        "new_comments_status": 1,
+        "allow_register_status": 0,
+        "register_permission_group": 3,
+        "contact_text_page_id": 2,
+        "header_menu_id": 1,
+        "footer_menu_id": 2,
+        "latest_news_section_id": 3,
+        "newsletter_contacts_group": 1,
+        "home_content1_section_id": 7,
+        "home_content2_section_id": 4,
+        "home_content3_section_id": 9,
+        "home_banners_section_id": 1,
+        "home_text_banners_section_id": 2,
+        "side_banners_section_id": 3
+    }
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "languages_count"<br>
+              1 = default language<br> 2 = all languages
+            </div>
+            <br>
+            <div>
+              "new_comments_status"<br>
+              1 = Automatic Publish<br> 0 = Manual By Admin
+            </div>
+            <br>
+            <div>
+              "allow_register_status"<br>
+              0 = Disabled <br> 1 = Active
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="menu"><strong>/api/v1/menu/MENU_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      List Menu Links by menu_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/menu/MENU_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>MENU_ID</strong> : Integer ID number
+            <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/menu/1
+            <br>
+            /api/v1/menu/1/en
+            <br>
+            /api/v1/menu/1/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Menu Links",
+    "links_count": 10,
+    "links": [
+        {
+            "id": 3,
+            "title": "Home",
+            "section_id": 0,
+            "href": "home",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 4,
+            "title": "About",
+            "section_id": 0,
+            "href": "topic/about",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 5,
+            "title": "Services",
+            "section_id": 2,
+            "href": "services",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 6,
+            "title": "News",
+            "section_id": 3,
+            "href": "news",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 7,
+            "title": "Photos",
+            "section_id": 4,
+            "href": "photos",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 8,
+            "title": "Videos",
+            "section_id": 5,
+            "href": "videos",
+            "sub_links_count": 6,
+            "sub_links": [
+                {
+                    "id": 8,
+                    "title": "Nature",
+                    "section_id": 5,
+                    "href": "topics/cat/8"
+                },
+                {
+                    "id": 9,
+                    "title": "Cities",
+                    "section_id": 5,
+                    "href": "topics/cat/9"
+                },
+                {
+                    "id": 10,
+                    "title": "Adventures",
+                    "section_id": 5,
+                    "href": "topics/cat/10"
+                },
+                {
+                    "id": 12,
+                    "title": "Youtube Videos",
+                    "section_id": 5,
+                    "href": "topics/cat/12"
+                },
+                {
+                    "id": 13,
+                    "title": "Vimeo videos",
+                    "section_id": 5,
+                    "href": "topics/cat/13"
+                },
+                {
+                    "id": 14,
+                    "title": "Hosted videos",
+                    "section_id": 5,
+                    "href": "topics/cat/14"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Audio",
+            "section_id": 6,
+            "href": "sounds",
+            "sub_links_count": 4,
+            "sub_links": [
+                {
+                    "id": 15,
+                    "title": "Solo",
+                    "section_id": 6,
+                    "href": "topics/cat/15"
+                },
+                {
+                    "id": 16,
+                    "title": "POP",
+                    "section_id": 6,
+                    "href": "topics/cat/16"
+                },
+                {
+                    "id": 18,
+                    "title": "Music Sounds",
+                    "section_id": 6,
+                    "href": "topics/cat/18"
+                },
+                {
+                    "id": 17,
+                    "title": "Other Sounds",
+                    "section_id": 6,
+                    "href": "topics/cat/17"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Products",
+            "section_id": 8,
+            "href": "products",
+            "sub_links_count": 4,
+            "sub_links": [
+                {
+                    "id": 19,
+                    "title": "Product Category 1",
+                    "section_id": 8,
+                    "href": "topics/cat/19"
+                },
+                {
+                    "id": 20,
+                    "title": "Product Category 2",
+                    "section_id": 8,
+                    "href": "topics/cat/20"
+                },
+                {
+                    "id": 21,
+                    "title": "Product Category 3",
+                    "section_id": 8,
+                    "href": "topics/cat/21"
+                },
+                {
+                    "id": 22,
+                    "title": "Product Category 4",
+                    "section_id": 8,
+                    "href": "topics/cat/22"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Blog",
+            "section_id": 7,
+            "href": "blog",
+            "sub_links_count": 0,
+            "sub_links": []
+        },
+        {
+            "id": 12,
+            "title": "Contact",
+            "section_id": 0,
+            "href": "contact",
+            "sub_links_count": 0,
+            "sub_links": []
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="banners"><strong>/api/v1/banners/GROUP_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      List of Banners by group_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/banners/GROUP_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>GROUP_ID</strong> : Integer ID number
+            <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/banners/1
+            <br>
+            /api/v1/banners/1/en
+            <br>
+            /api/v1/banners/1/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Banners",
+    "type": 1,
+    "banners_count": 3,
+    "banners": [
+        {
+            "id": 7,
+            "title": "Banner #1",
+            "details": "banner text details",
+            "file": "http://Photo_or_File_URL",
+            "video_type": null,
+            "youtube_link": null,
+            "link_url": "#",
+            "icon": null
+        },
+        {
+            "id": 2,
+            "title": "Banner #2",
+            "details": "banner text details",
+            "file": "http://Photo_or_File_URL",
+            "video_type": null,
+            "youtube_link": null,
+            "link_url": "#",
+            "icon": null
+        },
+        {
+            "id": 1,
+            "title": "Banner #3",
+            "details": "banner text details",
+            "file": "http://Photo_or_File_URL",
+            "video_type": null,
+            "youtube_link": null,
+            "link_url": "#",
+            "icon": null
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "type"<br>
+              0 = Code / Text<br>
+              1 = Photos<br>
+              2 = Videos<br>
+            </div>
+            <br>
+            <div>
+              "video_type"<br>
+              0 = Direct video<br>
+              1 = Youtube video<br>
+              2 = Vimeo video<br>
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="section"><strong>/api/v1/section/SECTION_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get Website Section Details by section_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/section/SECTION_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>SECTION_ID</strong> : Integer ID number
+            <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/section/7
+            <br>
+            /api/v1/section/7/en
+            <br>
+            /api/v1/section/7/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Website Section Details",
+    "section_id": "7",
+    "title": "Blog",
+    "href": "/blog",
+    "type": 0,
+    "categories_status": 1
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "type"<br>
+              0 = General text pages<br>
+              1 = Photo Gallery<br>
+              2 = Video Gallery<br>
+              3 = Audio Book<br>
+            </div>
+            <br>
+            <div>
+              "categories_status"<br>
+              0 = Without Categories<br>
+              1 = Have Main categories only<br>
+              2 = Have Main and sub categories<br>
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+
+    <hr>
+    <h3 id="categories"><strong>/api/v1/categories/SECTION_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get a list of categories of a section by section_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/categories/SECTION_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>SECTION_ID</strong> : Integer ID number
+            <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/categories/7
+            <br>
+            /api/v1/categories/7/en
+            <br>
+            /api/v1/categories/7/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Categories",
+    "section_id": "7",
+    "section_title": "Blog",
+    "type": 0,
+    "categories_count": 4,
+    "categories": [
+        {
+            "id": 1,
+            "title": "Web Design",
+            "icon": "fa-desktop",
+            "photo": null,
+            "href": "topics/cat/1",
+            "sub_categories_count": 0,
+            "sub_categories": []
+        },
+        {
+            "id": 2,
+            "title": "Mobile Applications",
+            "icon": "fa-apple",
+            "photo": null,
+            "href": "topics/cat/2",
+            "sub_categories_count": 0,
+            "sub_categories": []
+        },
+        {
+            "id": 3,
+            "title": "Motion Draws",
+            "icon": "fa-motorcycle",
+            "photo": null,
+            "href": "topics/cat/3",
+            "sub_categories_count": 0,
+            "sub_categories": []
+        },
+        {
+            "id": 4,
+            "title": "Web Development",
+            "icon": "fa-html5",
+            "photo": null,
+            "href": "topics/cat/4",
+            "sub_categories_count": 0,
+            "sub_categories": []
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "type"<br>
+              0 = General text pages<br>
+              1 = Photo Gallery<br>
+              2 = Video Gallery<br>
+              3 = Audio Book<br>
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+
+    <hr>
+    <h3 id="topics"><strong>/api/v1/topics/SECTION_ID/page/PAGE_NUMBER/count/TOPICS_COUNT</strong> - <a
+        href="#toc">top</a></h3>
+    <p>
+      Get a list of topics of a section by section_id,page_number,topics_count.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topics/SECTION_ID/page/PAGE_NUMBER/count/TOPICS_COUNT</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>SECTION_ID</strong> : Integer ID number <br>
+            <strong>PAGE_NUMBER</strong> : Integer page number <br>
+            <strong>TOPICS_COUNT</strong> : topics count per page
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topics/7/page/1/count/10
+            <br>
+            /api/v1/topics/7/page/1/count/10/en
+            <br>
+            /api/v1/topics/7/page/1/count/10/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Topics",
+    "section_id": "7",
+    "section_title": "Blog",
+    "type": 0,
+    "topics_count": 8,
+    "topics": [
+        {
+            "id": 15,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 2,
+            "href": "topic/15",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                {
+                    "id": 17,
+                    "title": "Web Design",
+                    "icon": "fa-desktop",
+                    "photo": null,
+                    "href": "topics/cat/17"
+                },
+                {
+                    "id": 18,
+                    "title": "Mobile Applications",
+                    "icon": "fa-apple",
+                    "photo": null,
+                    "href": "topics/cat/18"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 16,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 2,
+            "href": "topic/16",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                {
+                    "id": 19,
+                    "title": "Publications Design",
+                    "icon": "fa-connectdevelop",
+                    "photo": null,
+                    "href": "topics/cat/19"
+                },
+                {
+                    "id": 20,
+                    "title": "Search Engines Optmization",
+                    "icon": "fa-line-chart",
+                    "photo": null,
+                    "href": "topics/cat/20"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 17,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 0,
+            "href": "topic/17",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 1,
+            "Joined_categories": [
+                {
+                    "id": 21,
+                    "title": "Motion Draws",
+                    "icon": "fa-motorcycle",
+                    "photo": null,
+                    "href": "topics/cat/21"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 18,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 0,
+            "href": "topic/18",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                {
+                    "id": 22,
+                    "title": "Web Design",
+                    "icon": "fa-desktop",
+                    "photo": null,
+                    "href": "topics/cat/22"
+                },
+                {
+                    "id": 23,
+                    "title": "Search Engines Optmization",
+                    "icon": "fa-line-chart",
+                    "photo": null,
+                    "href": "topics/cat/23"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 19,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 0,
+            "href": "topic/19",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 1,
+            "Joined_categories": [
+                {
+                    "id": 24,
+                    "title": "Web Design",
+                    "icon": "fa-desktop",
+                    "photo": null,
+                    "href": "topics/cat/24"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 20,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 2,
+            "href": "topic/20",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 1,
+            "Joined_categories": [
+                {
+                    "id": 25,
+                    "title": "Motion Draws",
+                    "icon": "fa-motorcycle",
+                    "photo": null,
+                    "href": "topics/cat/25"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 21,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 4,
+            "href": "topic/21",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 3,
+            "Joined_categories": [
+                {
+                    "id": 26,
+                    "title": "Web Design",
+                    "icon": "fa-desktop",
+                    "photo": null,
+                    "href": "topics/cat/26"
+                },
+                {
+                    "id": 27,
+                    "title": "Mobile Applications",
+                    "icon": "fa-apple",
+                    "photo": null,
+                    "href": "topics/cat/27"
+                },
+                {
+                    "id": 28,
+                    "title": "Motion Draws",
+                    "icon": "fa-motorcycle",
+                    "photo": null,
+                    "href": "topics/cat/28"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        },
+        {
+            "id": 22,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 3,
+            "href": "topic/22",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                {
+                    "id": 29,
+                    "title": "Mobile Applications",
+                    "icon": "fa-apple",
+                    "photo": null,
+                    "href": "topics/cat/29"
+                },
+                {
+                    "id": 30,
+                    "title": "Web Development",
+                    "icon": "fa-html5",
+                    "photo": null,
+                    "href": "topics/cat/30"
+                }
+            ],
+            "user": {
+                "id": 1,
+                "name": "admin",
+                "href": "user/1/topics"
+            }
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "type"<br>
+              0 = General text pages<br>
+              1 = Photo Gallery<br>
+              2 = Video Gallery<br>
+              3 = Audio Book<br>
+            </div>
+            <br>
+            <div>
+              "video_type"<br>
+              0 = Direct video<br>
+              1 = Youtube video<br>
+              2 = Vimeo video<br>
+              3 = Embed<br>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+
+    <hr>
+    <h3 id="topic"><strong>/api/v1/topic/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get all topic details by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/5
+            <br>
+            /api/v1/topic/5/en
+            <br>
+            /api/v1/topic/5/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Details of topic",
+    "section_id": 7,
+    "section_title": "Blog",
+    "type": 0,
+    "topic": [
+        {
+            "id": 15,
+            "title": "Sample Lorem Ipsum Text",
+            "details": "html details of the topic",
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 2,
+            "href": "topic/15",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                        {
+                            "id": 17,
+                            "title": "Web Design",
+                            "icon": "fa-desktop",
+                            "photo": null,
+                            "href": "topics/cat/17"
+                        },
+                        {
+                            "id": 18,
+                            "title": "Mobile Applications",
+                            "icon": "fa-apple",
+                            "photo": null,
+                            "href": "topics/cat/18"
+                        }
+            ],
+            "photos_count": 0,
+            "photos": [],
+            "attach_files_count": 0,
+            "attach_files": [],
+            "maps_count": 0,
+            "maps": [],
+            "comments_count": 0,
+            "comments": [],
+            "related_topics_count": 0,
+            "related_topics": [],
+            "user": {
+            "id": 1,
+            "name": "admin",
+            "href": "user/1/topics"
+        }
+    }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "type"<br>
+              0 = General text pages<br>
+              1 = Photo Gallery<br>
+              2 = Video Gallery<br>
+              3 = Audio Book<br>
+            </div>
+            <br>
+            <div>
+              "video_type"<br>
+              0 = Direct video<br>
+              1 = Youtube video<br>
+              2 = Vimeo video<br>
+              3 = Embed<br>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="fields"><strong>/api/v1/topic/fields/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get additional fields with values of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/fields/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/fields/32
+            <br>
+            /api/v1/topic/fields/32/en
+            <br>
+            /api/v1/topic/fields/32/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Additional Fields of topic",
+    "topic_id": "32",
+    "topic_title": "Sample Lorem Ipsum Text",
+    "topic_link": "topic/32",
+    "topic_photo": "http://File_URL",
+    "fields_count": 2,
+    "fields": [
+        {
+            "type": 0,
+            "title": "Price",
+            "value": "50000 USD"
+        },
+        {
+            "type": 6,
+            "title": "Status",
+            "value": "1"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="photos"><strong>/api/v1/topic/photos/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get additional photos of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/photos/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/photos/32
+            <br>
+            /api/v1/topic/photos/32/en
+            <br>
+            /api/v1/topic/photos/32/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Photos of topic",
+    "topic_id": "9",
+    "topic_title": "Sample Lorem Ipsum Text",
+    "topic_link": "topic/9",
+    "topic_photo": "http://File_URL",
+    "photos_count": 3,
+    "photos": [
+        {
+            "id": 1,
+            "title": "14888146802295",
+            "url": "http://File_URL",
+            "href": "/topic/photo/1"
+        },
+        {
+            "id": 2,
+            "title": "14888146712437",
+            "url": "http://File_URL",
+            "href": "/topic/photo/2"
+        },
+        {
+            "id": 3,
+            "title": "14888155324481",
+            "url": "http://File_URL",
+            "href": "/topic/photo/3"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="photo"><strong>/api/v1/topic/photo/PHOTO_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get photo details of topic by photo_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/photo/PHOTO_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>PHOTO_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/photo/1
+            <br>
+            /api/v1/topic/photo/1/en
+            <br>
+            /api/v1/topic/photo/1/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Photo details",
+    "topic_id": 9,
+    "photo": [
+        {
+            "id": 1,
+            "title": "14888146802295",
+            "url": "http://File_URL"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="maps"><strong>/api/v1/topic/maps/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get maps of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/maps/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/maps/2
+            <br>
+            /api/v1/topic/maps/2/en
+            <br>
+            /api/v1/topic/maps/2/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Maps of topic",
+    "topic_id": "2",
+    "topic_title": "Contact Us",
+    "topic_link": "topic/2",
+    "topic_photo": null,
+    "maps_count": 3,
+    "maps": [
+        {
+            "id": 1,
+            "longitude": "39.639537564366684",
+            "latitude": "-101.953125",
+            "title": "Main Title here",
+            "details": "Co Rd 6, Kanorado, KS 67741, USA",
+            "href": "/topic/map/1"
+        },
+        {
+            "id": 4,
+            "longitude": "40.136890695345905",
+            "latitude": "-100.689697265625",
+            "title": "Main title here",
+            "details": "Rd 381, McCook, NE 69001, USA",
+            "href": "/topic/map/4"
+        },
+        {
+            "id": 5,
+            "longitude": "40.463666324587685",
+            "latitude": "-103.447265625",
+            "title": "Main title here",
+            "details": "Co Rd 6, Merino, CO 80741, USA",
+            "href": "/topic/map/5"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="map"><strong>/api/v1/topic/map/MAP_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get map details of topic by map_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/map/MAP_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>MAP_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/map/5
+            <br>
+            /api/v1/topic/map/5/en
+            <br>
+            /api/v1/topic/map/5/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Map details",
+    "topic_id": 2,
+    "map": [
+        {
+            "id": 5,
+            "longitude": "40.463666324587685",
+            "latitude": "-103.447265625",
+            "title": "Main title here",
+            "details": "Co Rd 6, Merino, CO 80741, USA"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="files"><strong>/api/v1/topic/files/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get additional files of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/files/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/files/5
+            <br>
+            /api/v1/topic/files/5/en
+            <br>
+            /api/v1/topic/files/5/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Attach files of topic",
+    "topic_id": "5",
+    "topic_title": "Nullam mollis dolor",
+    "topic_link": "topic/5",
+    "topic_photo": "http://Photo_URL",
+    "files_count": 2,
+    "files": [
+        {
+            "id": 1,
+            "title": "File title",
+            "url": "http://File_URL",
+            "href": "/topic/file/1"
+        },
+        {
+            "id": 2,
+            "title": "File title",
+            "url": "http://File_URL",
+            "href": "/topic/file/2"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="file"><strong>/api/v1/topic/file/FILE_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get file details of topic by file_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/file/FILE_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>FILE_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/file/1
+            <br>
+            /api/v1/topic/file/1/en
+            <br>
+            /api/v1/topic/file/1/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Attach file details",
+    "topic_id": 5,
+    "file": [
+        {
+            "id": 1,
+            "title": "File title",
+            "url": "http://File_URL"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="comments"><strong>/api/v1/topic/comments/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get comments of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/comments/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/comments/9
+            <br>
+            /api/v1/topic/comments/9/en
+            <br>
+            /api/v1/topic/comments/9/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Comments of topic",
+    "topic_id": "9",
+    "topic_title": "Sample Lorem Ipsum Text",
+    "topic_link": "topic/9",
+    "topic_photo": "http://File_URL",
+    "comments_count": 2,
+    "comments": [
+        {
+            "id": 1,
+            "name": "Roza Hesham",
+            "email": "email@site.com",
+            "date": "2017-03-06 15:55:21",
+            "comment": "Comment text details",
+            "href": "/topic/comment/1"
+        },
+        {
+            "id": 2,
+            "name": "Adam Ali",
+            "email": "emm@site.com",
+            "date": "2017-03-06 15:55:59",
+            "comment": "Comment text details",
+            "href": "/topic/comment/2"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="comment"><strong>/api/v1/topic/comment/COMMENT_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get comment details by comment_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/comment/COMMENT_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>COMMENT_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/comment/1
+            <br>
+            /api/v1/topic/comment/1/en
+            <br>
+            /api/v1/topic/comment/1/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Comment details",
+    "topic_id": 9,
+    "comment": [
+        {
+            "id": 1,
+            "name": "Roza Hesham",
+            "email": "email@site.com",
+            "date": "2017-03-06 15:55:21",
+            "comment": "Comment text details will be here"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+    <h3 id="related"><strong>/api/v1/topic/related/TOPIC_ID</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Get related topics of topic by topic_id .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/topic/related/TOPIC_ID</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>TOPIC_ID</strong> : Integer ID number
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/topic/related/5
+            <br>
+            /api/v1/topic/related/5/en
+            <br>
+            /api/v1/topic/related/5/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "Related topics of topic",
+    "topic_id": "5",
+    "topic_title": "Nullam mollis dolor",
+    "topic_link": "topic/5",
+    "topic_photo": "http://File_URL",
+    "related_topics_count": 2,
+    "related_topics": [
+        {
+            "id": 32,
+            "title": "Sample Lorem Ipsum Text",
+            "date": "2017-03-07",
+            "href": "topic/32",
+            "photo_file": "File_URL"
+        },
+        {
+            "id": 33,
+            "title": "Sample Lorem Ipsum Text",
+            "date": "2017-03-07",
+            "href": "topic/33",
+            "photo_file": "File_URL"
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+
+    <hr>
+    <h3 id="user"><strong>/api/v1/user/USER_ID/topics/page/PAGE_NO/count/TOPICS_COUNT</strong> - <a href="#toc">top</a>
+    </h3>
+    <p>
+      Get a list of topics of user by user_id,page_no,topics_count.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>GET</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/user/USER_ID/topics/page/PAGE_NO/count/TOPICS_COUNT</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            <strong>USER_ID</strong> : Integer ID number <br>
+            <strong>PAGE_NO</strong> : Integer page number <br>
+            <strong>TOPICS_COUNT</strong> : topics count per page
+            <br> <br>
+            <strong>/Lang_code</strong> to the end of URL
+            <br>Examples:<br>
+            /api/v1/user/1/topics/page/1/count/5
+            <br>
+            /api/v1/user/1/topics/page/1/count/5/en
+            <br>
+            /api/v1/user/1/topics/page/1/count/5/ar
+          </td>
+          <td>
+            Default Language if no Lang parameter is the default language in .env file
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "msg": "List of Topics for user",
+    "user_id": "1",
+    "user_name": "admin",
+    "topics_count": 5,
+    "topics": [
+        {
+            "id": 1,
+            "title": "About Us",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 34,
+            "href": "topic/1",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 0,
+            "Joined_categories": [],
+            "section_id": 1,
+            "section_name": "sitePages",
+            "section_type": 0
+        },
+        {
+            "id": 5,
+            "title": "Nullam mollis dolor",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": "fa-ambulance",
+            "visits": 18,
+            "href": "topic/5",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 0,
+            "Joined_categories": [],
+            "section_id": 2,
+            "section_name": "services",
+            "section_type": 0
+        },
+        {
+            "id": 9,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 15,
+            "href": "topic/9",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 0,
+            "Joined_categories": [],
+            "section_id": 3,
+            "section_name": "news",
+            "section_type": 0
+        },
+        {
+            "id": 15,
+            "title": "Sample Lorem Ipsum Text",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": "http://File_URL",
+            "audio_file": null,
+            "icon": null,
+            "visits": 2,
+            "href": "topic/15",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 2,
+            "Joined_categories": [
+                {
+                    "id": 17,
+                    "title": "Web Design",
+                    "icon": "fa-desktop",
+                    "photo": null,
+                    "href": "topics/cat/17"
+                },
+                {
+                    "id": 18,
+                    "title": "Mobile Applications",
+                    "icon": "fa-apple",
+                    "photo": null,
+                    "href": "topics/cat/18"
+                }
+            ],
+            "section_id": 7,
+            "section_name": "blog",
+            "section_type": 0
+        },
+        {
+            "id": 23,
+            "title": "Cars Gallery",
+            "details": null,
+            "date": "2017-03-06",
+            "video_type": null,
+            "video_file": "",
+            "photo_file": null,
+            "audio_file": null,
+            "icon": null,
+            "visits": 0,
+            "href": "topic/23",
+            "fields_count": 0,
+            "fields": [],
+            "Joined_categories_count": 0,
+            "Joined_categories": [],
+            "section_id": 4,
+            "section_name": "photos",
+            "section_type": 1
+        }
+    ]
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+            <br>
+            <div>
+              "video_type"<br>
+              0 = Direct video<br>
+              1 = Youtube video<br>
+              2 = Vimeo video<br>
+              3 = Embed<br>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            { "msg": "There is no data" }
+          </td>
+          <td>
+            Response Status Code : 404
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="subscribe"><strong>/api/v1/subscribe</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Post subscribe to news letter .
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>POST</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/subscribe</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>DATA Params</th>
+          <td>
+            <strong>"api_key"</strong> : Required <br>
+            <strong>"subscribe_name"</strong> : Required <br>
+            <strong>"subscribe_email"</strong> : Required
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "code": "1",
+    "msg": "You have subscribed successfully"
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            <pre>{
+    "message": "The given data was invalid.",
+    "errors": {
+        "api_key": [
+            "The api key field is required."
+        ],
+        "subscribe_name": [
+            "The subscribe name field is required."
+        ],
+        "subscribe_email": [
+            "The subscribe email field is required."
+        ]
+    }
+}</pre>
+            OR
+            <pre>{
+    "code": "2",
+    "msg": "You are already subscribed"
+}</pre>
+            OR
+            <pre>{
+    "code": "-1",
+    "msg": "Authentication failed"
+}</pre>
+          </td>
+          <td>
+            Required Fields:
+            <br>
+            Response Status Code : 422
+            <br><br>
+            Already subscribed:
+            <br>
+            Response Status Code : 200
+            <br><br>
+            Authentication failed:
+            <br>
+            Response Status Code : 500
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+
+    <hr>
+    <h3 id="post_comment"><strong>/api/v1/comment</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Post comment to topic by topic_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>POST</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/comment</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>DATA Params</th>
+          <td>
+            <strong>"api_key"</strong> : Required <br>
+            <strong>"topic_id"</strong> : Required <br>
+            <strong>"comment_name"</strong> : Required <br>
+            <strong>"comment_email"</strong> : Required <br>
+            <strong>"comment_message"</strong> : Required
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "code": "1",
+    "msg": "Your Comment Sent successfully"
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            <pre>{
+    "api_key": [
+        "The api key field is required."
+    ],
+    "topic_id": [
+        "The topic id field is required."
+    ],
+    "comment_name": [
+        "The comment name field is required."
+    ],
+    "comment_message": [
+        "The comment message field is required."
+    ],
+    "comment_email": [
+        "The comment email field is required."
+    ]
+}</pre>
+            OR
+            <pre>{
+    "code": "0",
+    "msg": "There is no data"
+}</pre>
+            OR
+            <pre>{
+    "code": "-1",
+    "msg": "Authentication failed"
+}</pre>
+          </td>
+          <td>
+            Required Fields:
+            <br>
+            Response Status Code : 422
+            <br><br>
+            Topic_id not found:
+            <br>
+            Response Status Code : 404
+            <br><br>
+            Authentication failed:
+            <br>
+            Response Status Code : 500
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <h3 id="order"><strong>/api/v1/order</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Post order to topic by topic_id.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>POST</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/order</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>DATA Params</th>
+          <td>
+            <strong>"api_key"</strong> : Required <br>
+            <strong>"topic_id"</strong> : Required <br>
+            <strong>"order_name"</strong> : Required <br>
+            <strong>"order_phone"</strong> : Required <br>
+            <strong>"order_email"</strong> : Required <br>
+            <strong>"order_qty"</strong> : Required <br>
+            <strong>"order_message"</strong> : Optional
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "code": "1",
+    "msg": "Your Order Sent successfully"
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            <pre>{
+    "api_key": [
+        "The api key field is required."
+    ],
+    "topic_id": [
+        "The topic id field is required."
+    ],
+    "order_name": [
+        "The order name field is required."
+    ],
+    "order_phone": [
+        "The order phone field is required."
+    ],
+    "order_email": [
+        "The order email field is required."
+    ],
+    "order_qty": [
+        "The order qty field is required."
+    ]
+}</pre>
+            OR
+            <pre>{
+    "code": "0",
+    "msg": "There is no data"
+}</pre>
+            OR
+            <pre>{
+    "code": "-1",
+    "msg": "Authentication failed"
+}</pre>
+          </td>
+          <td>
+            Required Fields:
+            <br>
+            Response Status Code : 422
+            <br><br>
+            Topic_id not found:
+            <br>
+            Response Status Code : 404
+            <br><br>
+            Authentication failed:
+            <br>
+            Response Status Code : 500
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+    <hr>
+    <h3 id="contact"><strong>/api/v1/contact</strong> - <a href="#toc">top</a></h3>
+    <p>
+      Post contact form data.
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Method</th>
+          <td>POST</td>
+          <td>
+            Request type
+          </td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td>
+            <small>
+              http://YOUR_WEBSITE_URL
+            </small>
+            <strong>/api/v1/contact</strong>
+          </td>
+          <td>
+            URL structure
+          </td>
+        </tr>
+        <tr>
+          <th>URL Params</th>
+          <td>
+            -
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>DATA Params</th>
+          <td>
+            <strong>"api_key"</strong> : Required <br>
+            <strong>"topic_id"</strong> : Required <br>
+            <strong>"contact_name"</strong> : Required <br>
+            <strong>"contact_email"</strong> : Required <br>
+            <strong>"contact_phone"</strong> : Optional <br>
+            <strong>"contact_subject"</strong> : Required <br>
+            <strong>"contact_message"</strong> : Required
+          </td>
+          <td>
+            -
+          </td>
+        </tr>
+        <tr>
+          <th>Success Response</th>
+          <td>
+            <pre>{
+    "code": "1",
+    "msg": "Message Sent successfully"
+}</pre>
+          </td>
+          <td>
+            <div>
+              Response Status Code : 200
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Error Response</th>
+          <td>
+            <pre>{
+    "api_key": [
+        "The api key field is required."
+    ],
+    "contact_name": [
+        "The contact name field is required."
+    ],
+    "contact_email": [
+        "The contact email field is required."
+    ],
+    "contact_subject": [
+        "The contact subject field is required."
+    ],
+    "contact_message": [
+        "The contact message field is required."
+    ]
+}</pre>
+            OR
+            <pre>{
+    "code": "-1",
+    "msg": "Authentication failed"
+}</pre>
+          </td>
+          <td>
+            Required Fields:
+            <br>
+            Response Status Code : 422
+            <br><br>
+            Authentication failed:
+            <br>
+            Response Status Code : 500
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </p>
+
+
+    <hr>
+    <p>Once again, thank you so much for purchasing this dashboard. As I said at the beginning, I'd be glad to help you
+      if
+      you have any questions relating to this dashboard. No guarantees, but I'll do my best to assist. If you have a
+      more
+      general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your
+      question in the "Item Discussion" section.</p>
+
+    <p class="append-bottom alt large"><strong>MMondi</strong></p>
+    <p><a href="#toc">Go To Table of Contents</a></p>
+
+    <hr class="space">
+  </div><!-- end div .container -->
+</body>
+
+</html>

@@ -71,6 +71,10 @@ class MenusController extends Controller
         //Father Menus
         $FatherMenus = Menu::where('father_id', $ParentMenuId)->where('type', 0)->orderby('row_no', 'asc')->get();
 
+
+        $Menus = Menu::where('father_id', '0')->orderby('row_no', 'asc')->paginate(env('BACKEND_PAGINATION'));
+        $EditedMenu = "";
+
         return view("backEnd.menus.create",
             compact("GeneralWebmasterSections", "EditedMenu", "ParentMenuId", "FatherMenus"));
     }

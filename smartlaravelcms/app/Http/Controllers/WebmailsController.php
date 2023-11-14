@@ -99,6 +99,7 @@ class WebmailsController extends Controller
             }
         } else {
             $WebmailsGroups = WebmailsGroup::orderby('id', 'asc')->get();
+            $WebmailToreply = "";
 
             if ($group_id > 0) {
                 //List of group Webmails
